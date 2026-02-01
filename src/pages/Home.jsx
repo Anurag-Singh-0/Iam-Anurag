@@ -50,18 +50,7 @@ function Home() {
         variants={bgCircle}
         initial="hidden"
         animate="visible"
-        className="
-          absolute
-          left-1/2
-          -top-250
-          -translate-x-1/2
-          z-0
-          h-300
-          w-300
-          rounded-full
-          bg-[#002B48]
-          blur-3xl
-        "
+        className="absolute left-1/2 -top-[250px] -translate-x-1/2 z-0 h-[300px] w-[300px] rounded-full bg-[#002B48] blur-3xl pointer-events-none"
       />
 
       {/* Content */}
@@ -112,11 +101,11 @@ function Home() {
           initial="hidden"
           animate="visible"
           custom={1.4}
-          className="mt-10 flex gap-4"
+          className="mt-10 flex gap-4 relative z-[110]"
         >
           <button
             onClick={() => scrollToSection("projects")}
-            className="rounded-full z-[100] bg-white/10 px-7 py-3 text-sm backdrop-blur-md transition hover:bg-white/20"
+            className="rounded-full bg-white/10 px-7 py-3 text-sm backdrop-blur-md transition hover:bg-white/20 cursor-pointer"
           >
             View Projects
           </button>

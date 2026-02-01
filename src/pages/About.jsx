@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
 import {
   Download,
@@ -7,9 +8,13 @@ import {
   Code2,
   Cpu,
   Terminal,
-  ArrowRight,
   Zap,
+  Loader2,
 } from "lucide-react";
+
+
+import { AnimatePresence } from "framer-motion";
+
 import aboutMeData from "../data/aboutMe";
 import educationData from "../data/education";
 
@@ -33,6 +38,15 @@ const cardVariants = {
 };
 
 function About() {
+  const [isDownloading, setIsDownloading] = useState(false);
+
+  const handleDownload = () => {
+    setIsDownloading(true);
+
+    setTimeout(() => {
+      setIsDownloading(false);
+    }, 2500);
+  };
   return (
     <section
       id="about"
@@ -61,10 +75,34 @@ function About() {
               <a
                 href="/Resume.pdf"
                 download
-                className="group flex items-center gap-3 rounded-full bg-white px-8 py-4 text-sm font-bold text-black transition hover:bg-gray-200 cursor-pointer"
+                onClick={handleDownload}
+                className="group relative flex items-center justify-center gap-3 overflow-hidden rounded-full bg-white px-8 py-4 text-sm font-bold text-black transition hover:bg-gray-200 cursor-pointer min-w-[160px]"
               >
-                <Download className="h-4 w-4" />
-                Resume
+                <AnimatePresence mode="wait">
+                  {!isDownloading ? (
+                    <motion.div
+                      key="default"
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -10 }}
+                      className="flex items-center gap-3"
+                    >
+                      <Download className="h-4 w-4" />
+                      <span>Resume</span>
+                    </motion.div>
+                  ) : (
+                    <motion.div
+                      key="loading"
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -10 }}
+                      className="flex items-center gap-3 text-blue-600"
+                    >
+                      <Loader2 className="h-4 w-4 animate-spin" />
+                      <span>Downloading...</span>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </a>
               {/* <button
                 onClick={() => scrollToSection("contact")}
