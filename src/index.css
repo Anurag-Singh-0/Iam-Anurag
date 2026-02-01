@@ -19,30 +19,6 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: #0f172a;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #1d4ed8;
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #1e40af;
-}
-
-/* Better selection color */
-::selection {
-  background-color: rgba(59, 130, 246, 0.3);
-  color: white;
-}
-
 /* Section spacing for smooth scroll */
 section {
   scroll-margin-top: 80px;

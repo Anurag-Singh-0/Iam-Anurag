@@ -65,7 +65,7 @@ function Home() {
       />
 
       {/* Content */}
-      <div className="relative z-10 flex min-h-screen flex-col items-center justify-center px-4 pt-28 text-center">
+      <div className="relative z-10 flex min-h-screen flex-col items-center justify-center px-4 pt-10 md:pt-28 text-center">
         {/* Availability */}
         <motion.div
           variants={fadeUp}

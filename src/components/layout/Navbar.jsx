@@ -28,11 +28,11 @@ function Navbar() {
       <motion.nav
         animate={{ y: [-100, 10] }}
         transition={{ duration: 0.5, delay: 0.7, ease: "easeInOut" }}
-        className="fixed top-0 md:top-4 left-1/2 z-50 w-full md:w-[95%] md:max-w-6xl -translate-x-1/2
+        className="fixed -top-4 md:top-4 left-1/2 z-50 w-full md:w-[95%] md:max-w-6xl -translate-x-1/2
       md:rounded-full border border-white/10 bg-black/50 backdrop-blur-md"
         aria-label="Main Navigation"
       >
-        <div className="flex items-center justify-between px-3 py-2 relative">
+        <div className="flex items-center justify-between px-3 py-6 md:py-2 relative">
           {/* Logo / Name */}
           <div
             className="flex items-center gap-2 cursor-pointer"
