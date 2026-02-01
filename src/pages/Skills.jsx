@@ -35,35 +35,63 @@ const ProgressBar = ({ label, percentage, color }) => (
   </div>
 );
 
-// --- Component: Skill Box (Glassmorphism Slide Up) ---
+// --- Component: Skill Box ---
 const SkillBox = ({ skill }) => (
   <motion.div
     variants={itemVariants}
-    className="group relative flex h-24 w-24 cursor-pointer flex-col items-center justify-center overflow-hidden rounded-2xl border border-white/10 bg-neutral-900/50 transition-all duration-300 hover:border-white/20 hover:bg-neutral-800 hover:shadow-lg"
+    whileHover="hover"
+    whileTap="hover"
+    initial="initial"
+    className="relative flex h-24 w-24 cursor-pointer flex-col items-center justify-center overflow-hidden rounded-2xl border border-white/10 bg-neutral-900/50 transition-colors duration-300 hover:border-white/20 hover:bg-neutral-800"
   >
-    {/* Icon - Slides up slightly on hover */}
-    <div className="transition-transform duration-300 ease-out group-hover:-translate-y-3">
+    {/* Icon Container */}
+    <motion.div
+      variants={{
+        initial: { y: 0 },
+        hover: { y: -12 },
+      }}
+      transition={{ type: "spring", stiffness: 300, damping: 20 }}
+    >
       <img
         src={skill.image}
         alt={skill.name}
-        className="h-10 w-10 object-contain drop-shadow-lg filter transition-all duration-300 group-hover:brightness-110"
+        className="h-10 w-10 object-contain drop-shadow-lg filter"
       />
-    </div>
+    </motion.div>
 
-    {/* Name Label - Glassmorphism Slide Up */}
-    <div className="absolute bottom-0 left-0 flex w-full translate-y-full items-center justify-center border-t border-white/10 bg-white/5 py-2 text-center backdrop-blur-md transition-transform duration-300 ease-out group-hover:translate-y-0">
+    {/* Name Label */}
+    <motion.div
+      variants={{
+        initial: { y: "100%" },
+        hover: { y: 0 },
+      }}
+      transition={{ type: "tween", ease: "easeOut", duration: 0.3 }}
+      className="absolute bottom-0 left-0 flex w-full items-center justify-center border-t border-white/10 bg-white/5 py-2 text-center backdrop-blur-md"
+    >
       <span className="text-[10px] font-bold uppercase tracking-wider text-white">
         {skill.name}
       </span>
-    </div>
+    </motion.div>
   </motion.div>
 );
 
 function Skills() {
   const progressStats = [
-    { label: "Frontend Development", percentage: 90, color: "bg-yellow-400 text-yellow-400" },
-    { label: "Backend Development", percentage: 85, color: "bg-yellow-400 text-yellow-400" },
-    { label: "Problem Solving / DSA", percentage: 70, color: "bg-cyan-500 text-cyan-500" },
+    {
+      label: "Frontend Development",
+      percentage: 90,
+      color: "bg-yellow-400 text-yellow-400",
+    },
+    {
+      label: "Backend Development",
+      percentage: 85,
+      color: "bg-yellow-400 text-yellow-400",
+    },
+    {
+      label: "Problem Solving / DSA",
+      percentage: 70,
+      color: "bg-cyan-500 text-cyan-500",
+    },
   ];
 
   return (
@@ -72,11 +100,13 @@ function Skills() {
       className="relative min-h-screen w-full bg-black px-4 py-24 text-white md:pb-24"
     >
       <div className="mx-auto max-w-5xl space-y-24">
-        
         {/* ================= HEADER ================= */}
         <div className="text-center">
           <h2 className="text-4xl font-bold tracking-tight md:text-6xl">
-            My <span className="bg-gradient-to-r from-white to-red-600 bg-clip-text text-transparent">Skills</span>
+            My{" "}
+            <span className="bg-gradient-to-r from-white to-red-600 bg-clip-text text-transparent">
+              Skills
+            </span>
           </h2>
           <p className="mt-4 text-lg text-gray-400">
             My technical proficiency and toolset.
@@ -105,15 +135,16 @@ function Skills() {
 
         {/* ================= SECTION 2: SKILL ICONS GRID ================= */}
         <div className="space-y-20">
-          
           {/* Frontend Section */}
           <div className="space-y-8">
             <div className="flex items-center gap-4">
-               <div className="h-px flex-1 bg-gradient-to-r from-transparent to-white/20"></div>
-               <h3 className="text-xl font-bold uppercase tracking-widest text-gray-400">Frontend</h3>
-               <div className="h-px flex-1 bg-gradient-to-l from-transparent to-white/20"></div>
+              <div className="h-px flex-1 bg-gradient-to-r from-transparent to-white/20"></div>
+              <h3 className="text-xl font-bold uppercase tracking-widest text-gray-400">
+                Frontend
+              </h3>
+              <div className="h-px flex-1 bg-gradient-to-l from-transparent to-white/20"></div>
             </div>
-            
+
             <motion.div
               variants={containerVariants}
               initial="hidden"
@@ -130,9 +161,11 @@ function Skills() {
           {/* Backend Section */}
           <div className="space-y-8">
             <div className="flex items-center gap-4">
-               <div className="h-px flex-1 bg-gradient-to-r from-transparent to-white/20"></div>
-               <h3 className="text-xl font-bold uppercase tracking-widest text-gray-400">Backend</h3>
-               <div className="h-px flex-1 bg-gradient-to-l from-transparent to-white/20"></div>
+              <div className="h-px flex-1 bg-gradient-to-r from-transparent to-white/20"></div>
+              <h3 className="text-xl font-bold uppercase tracking-widest text-gray-400">
+                Backend
+              </h3>
+              <div className="h-px flex-1 bg-gradient-to-l from-transparent to-white/20"></div>
             </div>
 
             <motion.div
@@ -150,10 +183,12 @@ function Skills() {
 
           {/* Others / Languages Section */}
           <div className="space-y-8">
-             <div className="flex items-center gap-4">
-               <div className="h-px flex-1 bg-gradient-to-r from-transparent to-white/20"></div>
-               <h3 className="text-xl font-bold uppercase tracking-widest text-gray-400">Languages</h3>
-               <div className="h-px flex-1 bg-gradient-to-l from-transparent to-white/20"></div>
+            <div className="flex items-center gap-4">
+              <div className="h-px flex-1 bg-gradient-to-r from-transparent to-white/20"></div>
+              <h3 className="text-xl font-bold uppercase tracking-widest text-gray-400">
+                Languages
+              </h3>
+              <div className="h-px flex-1 bg-gradient-to-l from-transparent to-white/20"></div>
             </div>
 
             <motion.div
@@ -168,9 +203,7 @@ function Skills() {
               ))}
             </motion.div>
           </div>
-
         </div>
-
       </div>
     </section>
   );

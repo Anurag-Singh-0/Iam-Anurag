@@ -3,14 +3,12 @@ import { motion, AnimatePresence } from "framer-motion";
 import {
   ExternalLink,
   Github,
-  Filter,
   Search,
   ChevronRight,
   Server,
   Layout,
   ArrowLeft,
   Eye,
-  Terminal,
 } from "lucide-react";
 import { getAllCategories, getProjectsByCategory } from "../data/projects";
 import { useNavigate, Link } from "react-router-dom";

@@ -69,7 +69,25 @@ function Navbar() {
 
           {/* Let's connect button  */}
           <div className="flex items-center gap-3 md:gap-5">
-            <motion.button
+            <div className="hidden md:flex items-center gap-5">
+              <motion.button
+                animate={{ x: [0, 4, -4, 0] }}
+                transition={{ delay: 1, repeat: Infinity }}
+                drag
+                dragConstraints={{
+                  top: 0,
+                  left: 0,
+                  right: 0,
+                  bottom: 0,
+                }}
+                dragTransition={{ bounceStiffness: 600, bounceDamping: 5 }}
+                onClick={() => handleNavClick("contact")}
+                className="text-sm font-light outline z-[100] outline-white/30 px-5 py-2 rounded-full cursor-pointer bg-white/10 backdrop-blur-lg hover:bg-white/20 transition-colors"
+              >
+                Let's Connect
+              </motion.button>
+            </div>
+            {/* <motion.button
               animate={{ x: [0, 4, -4, 0] }}
               transition={{ delay: 1, repeat: Infinity }}
               drag
@@ -87,7 +105,7 @@ function Navbar() {
               className="text-sm font-light outline z-[100] outline-white/30 px-5 py-2 rounded-full cursor-pointer bg-white/10 backdrop-blur-lg hover:bg-white/20 transition-colors"
             >
               Let's Connect
-            </motion.button>
+            </motion.button> */}
 
             <motion.div whileTap={{ scale: 0.9 }}>
               {open ? (
