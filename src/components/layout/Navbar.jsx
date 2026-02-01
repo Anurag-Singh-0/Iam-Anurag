@@ -28,7 +28,7 @@ function Navbar() {
       <motion.nav
         animate={{ y: [-100, 10] }}
         transition={{ duration: 0.5, delay: 0.7, ease: "easeInOut" }}
-        className="fixed -top-4 md:top-4 left-1/2 z-50 w-full md:w-[95%] md:max-w-6xl -translate-x-1/2
+        className="fixed -top-4 md:top-4 left-1/2 z-[100] w-full md:w-[95%] md:max-w-6xl -translate-x-1/2
       md:rounded-full border border-white/10 bg-black/50 backdrop-blur-md"
         aria-label="Main Navigation"
       >
@@ -84,7 +84,7 @@ function Navbar() {
               }}
               dragTransition={{ bounceStiffness: 600, bounceDamping: 5 }}
               onClick={() => handleNavClick("contact")}
-              className="text-sm font-light outline outline-white/30 px-5 py-2 rounded-full cursor-pointer bg-white/10 backdrop-blur-lg hover:bg-white/20 transition-colors"
+              className="text-sm font-light outline z-[100] outline-white/30 px-5 py-2 rounded-full cursor-pointer bg-white/10 backdrop-blur-lg hover:bg-white/20 transition-colors"
             >
               Let's Connect
             </motion.button>
