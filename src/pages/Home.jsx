@@ -50,7 +50,7 @@ function Home() {
         variants={bgCircle}
         initial="hidden"
         animate="visible"
-        className="absolute left-1/2 -top-[250px] -translate-x-1/2 z-0 h-[300px] w-[300px] rounded-full bg-[#002B48] blur-3xl pointer-events-none"
+        className="absolute left-1/2 -top-[500px] -translate-x-1/2 z-0 h-[700px] w-[700px] rounded-full bg-[#002B48] blur-3xl pointer-events-none"
       />
 
       {/* Content */}
