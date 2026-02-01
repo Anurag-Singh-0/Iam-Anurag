@@ -1,5 +1,14 @@
+import React from "react";
 import { motion } from "framer-motion";
-import { ChevronRight, Code2, Server, Layout, Eye } from "lucide-react";
+import {
+  ChevronRight,
+  Code2,
+  Server,
+  Layout,
+  Eye,
+  Zap,
+  ArrowUpRight,
+} from "lucide-react";
 import { getFeaturedProjects } from "../data/projects";
 import { useNavigate } from "react-router-dom";
 
@@ -11,133 +20,134 @@ function Projects() {
     navigate(`/projects/${projectSlug}`);
   };
 
-  const handleViewMore = () => {
-    navigate("/more-projects");
-  };
-
   return (
-    <section id="projects" className="relative min-h-screen bg-black py-20">
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <div className="text-center mb-16">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="inline-flex items-center gap-3 mb-4"
+    <section
+      id="projects"
+      className="relative bg-[#030303] py-32 overflow-hidden"
+    >
+      {/* Background Decorative Element */}
+      <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-indigo-600/5 blur-[120px] rounded-full pointer-events-none" />
+
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6">
+        {/* SECTION HEADER */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-20">
+          <div className="space-y-4">
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              className="text-5xl md:text-7xl font-black text-white tracking-tighter uppercase italic leading-[0.8]"
+            >
+              Featured{" "}
+              <span className="text-transparent stroke-text">Work</span>
+            </motion.h2>
+          </div>
+
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            onClick={() => navigate("/more-projects")}
+            className="group flex items-center gap-4 px-8 py-4 bg-white/[0.03] border border-white/10 rounded-2xl text-white text-[10px] font-black uppercase tracking-[0.2em] hover:bg-white hover:text-black transition-all duration-500 italic"
           >
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-              Featured <span className="bg-gradient-to-r from-yellow-200 to-green-500 bg-clip-text text-transparent">Work</span>
-            </h2>
-          </motion.div>
+            Explore_Projects <ChevronRight className="w-4 h-4" />
+          </motion.button>
         </div>
 
-        {/* Projects Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+        {/* PROJECTS GRID */}
+        <div className="grid lg:grid-cols-2 gap-12">
           {featuredProjects.map((project, index) => (
             <motion.div
               key={project.id}
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1 }}
-              className="group relative cursor-pointer"
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.1, duration: 0.6 }}
+              className="group relative"
               onClick={() => handleProjectClick(project.slug)}
             >
-              {/* MacBook Style Card */}
-              <div className="relative bg-gray-900/20 backdrop-blur-sm border border-gray-800 rounded-2xl overflow-hidden transition-all duration-500 group-hover:border-indigo-500/50 group-hover:shadow-[0_0_30px_rgba(79,70,229,0.1)]">
-                {/* MacBook Top Bar */}
-                <div className="h-8 bg-black/30 flex items-center px-4 border-b border-gray-800">
-                  <div className="flex space-x-2">
-                    <div className="w-2.5 h-2.5 rounded-full bg-red-500/80" />
-                    <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/80" />
-                    <div className="w-2.5 h-2.5 rounded-full bg-green-500/80" />
-                  </div>
-                </div>
-
-                {/* Image Section with Eye Hover & Blur */}
-                <div className="relative h-52 w-full overflow-hidden">
+              <div className="relative cursor-pointer overflow-hidden rounded-[2.5rem] bg-[#080808] border border-white/5 transition-all duration-700 group-hover:border-indigo-500/30">
+                {/* IMAGE COMPONENT */}
+                <div className="relative aspect-[16/10] overflow-hidden">
                   <img
                     src={project.images[0]}
                     alt={project.alt}
-                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    className="h-full w-full object-cover opacity-50 grayscale group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700"
                   />
 
-                  {/* Centered Eye & Background Blur Overlay */}
-                  <div className="absolute inset-0 flex items-center justify-center bg-black/50 backdrop-blur-md opacity-0 group-hover:opacity-100 transition-all duration-300">
-                    <div className="flex flex-col items-center gap-2 p-5 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-xl transform scale-90 group-hover:scale-100 transition-all duration-300">
-                      <Eye className="w-6 h-6 text-white" />
-                      <span className="text-white text-[10px] font-bold uppercase tracking-[0.2em]">
-                        View Case Study
+                  {/* OVERLAY LOGIC */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#080808] via-transparent to-transparent opacity-80" />
+
+                  {/* FLOATING CATEGORY BADGE */}
+                  <div className="absolute top-6 left-6 flex items-center gap-3">
+                    <div className="px-4 py-1.5 bg-black/60 backdrop-blur-md border border-white/10 rounded-xl">
+                      <span className="text-[9px] font-black text-white uppercase tracking-widest italic">
+                        {project.category}
                       </span>
+                    </div>
+                  </div>
+
+                  {/* INTERACTIVE EYE (CENTERED) */}
+                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500">
+                    <div className="w-20 h-20 bg-indigo-500 text-black rounded-full flex items-center justify-center shadow-[0_0_50px_rgba(99,102,241,0.4)]">
+                      <ArrowUpRight className="w-8 h-8" />
                     </div>
                   </div>
                 </div>
 
-                {/* Info Section */}
-                <div className="p-6">
-                  <div className="flex items-center justify-between mb-4">
-                    <div className="flex items-center gap-2">
-                      {project.category === "Full-stack" ? (
-                        <div className="p-1.5 bg-white/10 border border-blue-500/20 rounded-lg">
-                          <Server className="w-4 h-4 text-white" />
-                        </div>
-                      ) : (
-                        <div className="p-1.5 bg-white/10 border border-purple-500/20 rounded-lg">
-                          <Layout className="w-4 h-4 text-white" />
-                        </div>
-                      )}
-                      <span className="text-xs font-medium text-gray-400 uppercase tracking-wider">
-                        {project.category}
-                      </span>
-                    </div>
-
-                    {/* Animated Green Status for Complete */}
+                {/* CONTENT AREA */}
+                <div className="p-10 space-y-6">
+                  <div className="flex items-center justify-between">
+                    <h3 className="text-3xl md:text-4xl font-black text-white uppercase tracking-tighter italic group-hover:text-indigo-400 transition-colors">
+                      {project.title}
+                    </h3>
                     {project.status === "complete" && (
-                      <div className="flex items-center gap-2 px-2 py-1 bg-green-500/5 border border-green-500/10 rounded-full">
-                        <div className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse shadow-[0_0_8px_rgba(34,197,94,0.6)]" />
-                        <span className="text-[10px] font-bold text-green-500 uppercase">
-                          Complete
+                      <div className="flex items-center gap-2 px-3 py-1 bg-emerald-500/5 border border-emerald-500/20 rounded-full">
+                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                        <span className="text-[9px] font-black text-emerald-500 uppercase tracking-widest">
+                          Live_Module
                         </span>
                       </div>
                     )}
                   </div>
 
-                  <h3 className="text-xl font-bold text-white mb-2 group-hover:text-indigo-400 transition-colors">
-                    {project.title}
-                  </h3>
-
-                  <p className="text-gray-400 text-sm line-clamp-2 mb-5 leading-relaxed">
-                    {project.highlights[0]}
+                  <p className="text-slate-500 text-base font-medium leading-relaxed max-w-md">
+                    {project.description}
                   </p>
 
-                  {/* Tech Stack Pills */}
-                  <div className="flex flex-wrap gap-2">
-                    {project.techStack.slice(0, 3).map((tech, idx) => (
+                  <div className="flex flex-wrap gap-2 pt-4">
+                    {project.techStack.slice(0, 4).map((tech, idx) => (
                       <span
                         key={idx}
-                        className="text-[10px] px-2.5 py-1 bg-gray-800/50 border border-gray-700/50 rounded-md text-gray-300 font-medium"
+                        className="px-3 py-1 bg-white/[0.03] border border-white/5 rounded-lg text-[10px] text-slate-400 font-bold uppercase tracking-tighter"
                       >
                         {tech}
                       </span>
                     ))}
                   </div>
                 </div>
+
+                {/* BLUEPRINT DECOR (SIDE DECOR) */}
+                <div className="absolute top-1/2 right-0 -translate-y-1/2 h-2/3 w-[1px] bg-gradient-to-b from-transparent via-indigo-500/20 to-transparent" />
               </div>
             </motion.div>
           ))}
         </div>
 
-        {/* View More Button */}
-        <div className="text-center">
-          <button
-            onClick={handleViewMore}
-            className="inline-flex items-center gap-3 px-8 py-4 bg-transparent border border-indigo-500/30 text-white rounded-full font-bold hover:bg-indigo-500/5 hover:border-indigo-500 transition-all duration-300 group cursor-pointer"
-          >
-            <Code2 className="w-5 h-5 text-indigo-400" />
-            <span>View All Projects</span>
-            <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-          </button>
+        {/* BOTTOM CTA DECOR */}
+        <div className="mt-32 flex flex-col items-center">
+          <div className="w-px h-24 bg-gradient-to-b from-indigo-500 to-transparent mb-8" />
+          <p className="text-[10px] font-black text-slate-700 uppercase tracking-[1em] mb-4">
+            End_of_Selection
+          </p>
         </div>
       </div>
+
+      <style jsx>{`
+        .stroke-text {
+          -webkit-text-stroke: 1px rgba(255, 255, 255, 0.2);
+        }
+        .group:hover .stroke-text {
+          -webkit-text-stroke: 1px rgba(99, 102, 241, 0.5);
+        }
+      `}</style>
     </section>
   );
 }
