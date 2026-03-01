@@ -19,8 +19,11 @@ function Navbar() {
   ];
 
   const handleNavClick = (sectionId) => {
-    scrollToSection(sectionId);
-    setOpen(false); // Close mobile menu after clicking
+    setOpen(false);
+  
+    setTimeout(() => {
+      scrollToSection(sectionId);
+    }, 150);
   };
 
   return (
@@ -109,7 +112,6 @@ function Navbar() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.3 }}
-              // INCREASED Z-INDEX AND ADDED TOUCH-ACTION MANIPULATION
               className="md:hidden absolute top-full left-0 right-0 bg-black/95 backdrop-blur-xl border-t border-white/10 rounded-b-lg overflow-hidden z-[200] touch-manipulation"
               style={{ marginTop: "1px" }}
             >
@@ -123,8 +125,7 @@ function Navbar() {
                     transition={{ delay: index * 0.05 }}
                   >
                     <button
-                      // CHANGED ONCLICK TO ONPOINTERDOWN FOR BETTER MOBILE RESPONSE
-                      onPointerDown={() => handleNavClick(link.to)}
+                      onClick={() => handleNavClick(link.to)}
                       className="block py-4 text-sm font-medium transition-all duration-300 text-gray-300 hover:text-white hover:pl-3 w-full text-left"
                     >
                       {link.name}

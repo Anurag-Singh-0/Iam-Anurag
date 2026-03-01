@@ -54,7 +54,19 @@ import oldportfolioipad from "./assets/project-images/oldportfolio-ipad.png";
 import oldportfoliomobile from "./assets/project-images/oldportfolio-iphone.png";
 
 //FuryLand - E - commerce
-import furylandFrontPage from "./assets/project-images/FuryLand-frontpage.png";
+import home from "./assets/project-images/FuryLand/home.png";
+import search from "./assets/project-images/FuryLand/search.png";
+import collection from "./assets/project-images/FuryLand/collection.png";
+import cart from "./assets/project-images/FuryLand/cart.png";
+import order from "./assets/project-images/FuryLand/order.png";
+
+// Admin page images
+import admin_order from "./assets/project-images/FuryLand/admin-order.png";
+import admin_dashboard from "./assets/project-images/FuryLand/admin-dashboard.png";
+import admin_add from "./assets/project-images/FuryLand/admin-add.png";
+import admin_customer from "./assets/project-images/FuryLand/admin-customer.png";
+import admin_list from "./assets/project-images/FuryLand/admin-list.png";
+
 
 // Achievements images
 
@@ -96,7 +108,16 @@ export const images = {
   oldportfolioLaptop,
   oldportfolioipad,
   oldportfoliomobile,
-  furylandFrontPage,
+  home,
+  order, 
+  collection,
+  cart,
+  search,
+  admin_add,
+  admin_customer,
+  admin_dashboard,
+  admin_list,
+  admin_order
 };
 
 export default images;

@@ -69,7 +69,7 @@ function Projects() {
                   <img
                     src={project.images[0]}
                     alt={project.alt}
-                    className="h-full w-full object-cover opacity-50 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700"
+                    className="h-full w-full object-cover opacity-90 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700"
                   />
 
                   {/* OVERLAY LOGIC */}

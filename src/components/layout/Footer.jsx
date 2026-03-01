@@ -44,9 +44,9 @@ function Footer() {
               <li>
                 <button onClick={() => scrollToSection("projects")} className="transition-colors cursor-pointer hover:text-blue-400">Projects</button>
               </li>
-              <li>
+              {/* <li>
                 <button onClick={() => scrollToSection("achievements")} className="transition-colors cursor-pointer hover:text-blue-400">Achievements</button>
-              </li>
+              </li> */}
             </ul>
           </div>
 

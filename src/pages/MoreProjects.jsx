@@ -121,7 +121,7 @@ function MoreProjects() {
                     <img
                       src={project.images[0]}
                       alt={project.alt}
-                      className="h-full w-full object-cover opacity-60 transition-transform duration-700 group-hover:scale-110 group-hover:opacity-100"
+                      className="h-full w-full object-cover opacity-90 transition-transform duration-700 group-hover:scale-110 group-hover:opacity-100"
                     />
 
                     {/* Technical Overlay */}

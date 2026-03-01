@@ -105,7 +105,7 @@ function Home() {
         >
           <button
             onClick={() => scrollToSection("projects")}
-            className="rounded-full bg-white/10 px-7 py-3 text-sm backdrop-blur-md transition hover:bg-white/20 cursor-pointer"
+            className="w-full sm:w-auto rounded-full bg-white/10 border border-white/10 px-8 py-3.5 text-sm font-semibold text-white backdrop-blur-md transition-colors hover:bg-white hover:text-black touch-manipulation cursor-pointer shadow-lg"
           >
             View Projects
           </button>
