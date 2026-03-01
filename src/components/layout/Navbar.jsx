@@ -14,13 +14,13 @@ function Navbar() {
     { name: "About Me", to: "about" },
     { name: "Skills", to: "skills" },
     { name: "Projects", to: "projects" },
-    { name: "Achievement", to: "achievements" },
+    // { name: "Achievement", to: "achievements" },
     { name: "Contact", to: "contact" },
   ];
 
   const handleNavClick = (sectionId) => {
     scrollToSection(sectionId);
-    setOpen(false);
+    setOpen(false); // Close mobile menu after clicking
   };
 
   return (
@@ -28,8 +28,7 @@ function Navbar() {
       <motion.nav
         animate={{ y: [-100, 10] }}
         transition={{ duration: 0.5, delay: 0.7, ease: "easeInOut" }}
-        className="fixed -top-4 md:top-4 left-1/2 z-[100] w-full md:w-[95%] md:max-w-6xl -translate-x-1/2
-      md:rounded-full border border-white/10 bg-black/50 backdrop-blur-md"
+        className="fixed -top-4 md:top-4 left-1/2 z-[100] w-full md:w-[95%] md:max-w-6xl -translate-x-1/2 md:rounded-full border border-white/10 bg-black/50 backdrop-blur-md"
         aria-label="Main Navigation"
       >
         <div className="flex items-center justify-between px-3 py-6 md:py-2 relative">
@@ -39,7 +38,10 @@ function Navbar() {
             onClick={() => handleNavClick("home")}
           >
             <img
-              onClick={() => setShowImageModal(true)}
+              onClick={(e) => {
+                e.stopPropagation();
+                setShowImageModal(true);
+              }}
               src={images.profile}
               alt="profile"
               className="w-10 rounded-full"
@@ -67,19 +69,14 @@ function Navbar() {
             ))}
           </ul>
 
-          {/* Let's connect button  */}
+          {/* Let's connect button & Mobile Toggle */}
           <div className="flex items-center gap-3 md:gap-5">
             <div className="hidden md:flex items-center gap-5">
               <motion.button
                 animate={{ x: [0, 4, -4, 0] }}
                 transition={{ delay: 1, repeat: Infinity }}
                 drag
-                dragConstraints={{
-                  top: 0,
-                  left: 0,
-                  right: 0,
-                  bottom: 0,
-                }}
+                dragConstraints={{ top: 0, left: 0, right: 0, bottom: 0 }}
                 dragTransition={{ bounceStiffness: 600, bounceDamping: 5 }}
                 onClick={() => handleNavClick("contact")}
                 className="text-sm font-light outline z-[100] outline-white/30 px-5 py-2 rounded-full cursor-pointer bg-white/10 backdrop-blur-lg hover:bg-white/20 transition-colors"
@@ -87,25 +84,6 @@ function Navbar() {
                 Let's Connect
               </motion.button>
             </div>
-            {/* <motion.button
-              animate={{ x: [0, 4, -4, 0] }}
-              transition={{ delay: 1, repeat: Infinity }}
-              drag
-              whileDrag={{
-                scale: 0.8,
-              }}
-              dragConstraints={{
-                top: -0,
-                left: -0,
-                right: 0,
-                bottom: 0,
-              }}
-              dragTransition={{ bounceStiffness: 600, bounceDamping: 5 }}
-              onClick={() => handleNavClick("contact")}
-              className="text-sm font-light outline z-[100] outline-white/30 px-5 py-2 rounded-full cursor-pointer bg-white/10 backdrop-blur-lg hover:bg-white/20 transition-colors"
-            >
-              Let's Connect
-            </motion.button> */}
 
             <motion.div whileTap={{ scale: 0.9 }}>
               {open ? (
@@ -131,21 +109,23 @@ function Navbar() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.3 }}
-              className="md:hidden absolute top-full left-0 right-0 bg-black/90 backdrop-blur-lg border-t border-white/10 rounded-b-lg overflow-hidden z-50"
+              // INCREASED Z-INDEX AND ADDED TOUCH-ACTION MANIPULATION
+              className="md:hidden absolute top-full left-0 right-0 bg-black/95 backdrop-blur-xl border-t border-white/10 rounded-b-lg overflow-hidden z-[200] touch-manipulation"
               style={{ marginTop: "1px" }}
             >
-              <div className="px-6 py-4">
+              <div className="px-6 py-4 flex flex-col">
                 {navLinks.map((link, index) => (
                   <motion.div
                     key={link.name}
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     exit={{ opacity: 0 }}
-                    transition={{ delay: index * 0.08 }}
+                    transition={{ delay: index * 0.05 }}
                   >
                     <button
-                      onClick={() => handleNavClick(link.to)}
-                      className="block py-3 text-sm transition-all duration-300 text-gray-300 hover:text-white hover:pl-3 w-full text-left"
+                      // CHANGED ONCLICK TO ONPOINTERDOWN FOR BETTER MOBILE RESPONSE
+                      onPointerDown={() => handleNavClick(link.to)}
+                      className="block py-4 text-sm font-medium transition-all duration-300 text-gray-300 hover:text-white hover:pl-3 w-full text-left"
                     >
                       {link.name}
                     </button>
@@ -157,7 +137,7 @@ function Navbar() {
         </AnimatePresence>
       </motion.nav>
 
-      {/* Image Model */}
+      {/* Image Modal */}
       <AnimatePresence>
         {showImageModal && (
           <motion.div
@@ -165,7 +145,7 @@ function Navbar() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 backdrop-blur-sm"
+            className="fixed inset-0 z-[300] flex items-center justify-center bg-black/80 backdrop-blur-sm"
             onClick={() => setShowImageModal(false)}
           >
             <motion.div
