@@ -66,7 +66,6 @@ function MoreProjects() {
         {/* 2. QUERY INTERFACE (SEARCH & FILTERS) */}
         <section className="mb-20 space-y-12">
           <div className="grid lg:grid-cols-12 gap-10 items-end">
-            {/* Search Input */}
             <div className="lg:col-span-5 space-y-4">
               <div className="relative group">
                 <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-600 group-focus-within:text-indigo-500 transition-colors" />
@@ -80,7 +79,6 @@ function MoreProjects() {
               </div>
             </div>
 
-            {/* Category Filter */}
             <div className="lg:col-span-7 space-y-4">
               <div className="flex flex-wrap gap-2">
                 {categories.map((category) => (
@@ -116,7 +114,7 @@ function MoreProjects() {
                 onClick={() => handleProjectClick(project.slug)}
               >
                 <div className="h-full bg-[#080808] border border-white/5 rounded-[2rem] overflow-hidden transition-all duration-700 group-hover:border-indigo-500/40 group-hover:shadow-[0_0_40px_-15px_rgba(99,102,241,0.3)]">
-                  {/* Image Matrix */}
+                  {/* Image */}
                   <div className="relative h-52 overflow-hidden bg-black">
                     <img
                       src={project.images[0]}
@@ -124,10 +122,12 @@ function MoreProjects() {
                       className="h-full w-full object-cover opacity-90 transition-transform duration-700 group-hover:scale-110 group-hover:opacity-100"
                     />
 
-                    {/* Technical Overlay */}
-                    <div className="absolute inset-0 z-20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500">
+                    {/* Overlay wrapper — only opacity fades in/out */}
+                    <div className="absolute inset-0 z-20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      {/* Blur layer has NO transition — it's always rendered at full blur, just hidden by parent opacity */}
                       <div className="absolute inset-0 bg-indigo-950/40 backdrop-blur-sm" />
-                      <div className="relative flex flex-col items-center gap-3 transform translate-y-4 group-hover:translate-y-0 transition-all duration-500">
+                      {/* Icon slides up */}
+                      <div className="relative flex flex-col items-center gap-3 translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
                         <div className="w-14 h-14 bg-white text-black rounded-full flex items-center justify-center">
                           <Eye className="w-5 h-5" />
                         </div>
@@ -137,7 +137,7 @@ function MoreProjects() {
                       </div>
                     </div>
 
-                    {/* Floating Status Badge */}
+                    {/* Status Badge */}
                     <div className="absolute top-4 right-4 z-30">
                       {project.status === "complete" ? (
                         <div className="flex items-center gap-2 px-3 py-1 bg-black/60 backdrop-blur-md border border-emerald-500/30 rounded-full">
@@ -157,7 +157,7 @@ function MoreProjects() {
                     </div>
                   </div>
 
-                  {/* Content Terminal */}
+                  {/* Content */}
                   <div className="p-8 space-y-6">
                     <div className="flex items-center gap-2">
                       <div className="p-1.5 bg-white/5 border border-white/10 rounded-lg">
@@ -180,7 +180,6 @@ function MoreProjects() {
                       {project.description}
                     </p>
 
-                    {/* Tech Matrix Tags */}
                     <div className="flex flex-wrap gap-2">
                       {project.techStack.slice(0, 3).map((tech, idx) => (
                         <span
@@ -197,7 +196,6 @@ function MoreProjects() {
                       )}
                     </div>
 
-                    {/* Action Matrix */}
                     <div className="flex items-center justify-between pt-6 border-t border-white/5">
                       <div className="flex gap-4">
                         {project.live && (
@@ -234,7 +232,7 @@ function MoreProjects() {
           </AnimatePresence>
         </motion.div>
 
-        {/* 4. ERROR PHASE */}
+        {/* 4. EMPTY STATE */}
         {filteredProjects.length === 0 && (
           <motion.div
             initial={{ opacity: 0 }}

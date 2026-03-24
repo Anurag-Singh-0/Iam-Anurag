@@ -176,7 +176,7 @@ function Contact() {
                       id="name"
                       name="name"
                       required
-                      placeholder="Alex"
+                      placeholder="Your name"
                       className="w-full rounded-xl border border-white/10 bg-black/50 px-4 py-3 text-white placeholder-gray-600 outline-none transition-all focus:border-blue-500 focus:bg-white/5 focus:ring-1 focus:ring-blue-500"
                     />
                   </div>
@@ -189,7 +189,7 @@ function Contact() {
                       id="email"
                       name="email"
                       required
-                      placeholder="alex@example.com"
+                      placeholder="user@example.com"
                       className="w-full rounded-xl border border-white/10 bg-black/50 px-4 py-3 text-white placeholder-gray-600 outline-none transition-all focus:border-blue-500 focus:bg-white/5 focus:ring-1 focus:ring-blue-500"
                     />
                   </div>

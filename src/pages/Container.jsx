@@ -18,30 +18,31 @@ function Container() {
       {/* Toast Notifications Container */}
       <Toaster position="bottom-right" reverseOrder={false} />
 
-      <div className="h-screen overflow-y-auto scroll-smooth">
+      {/* data-scroll-container lets SmoothScrollContext find the real scrollable element */}
+      <div data-scroll-container className="h-screen overflow-y-auto scroll-smooth">
         <Navbar />
-        
+
         <main>
           <section id="home" className="min-h-screen">
             <Home />
           </section>
-          
+
           <section id="about" className="min-h-screen">
             <About />
           </section>
-          
+
           <section id="skills" className="min-h-screen">
             <Skills />
           </section>
-          
+
           <section id="projects" className="min-h-screen">
             <Projects />
           </section>
-          
+
           {/* <section id="achievements" className="min-h-screen">
             <Achievement />
           </section> */}
-          
+
           <section id="contact" className="min-h-screen">
             <Suspense fallback={<div className="min-h-screen flex items-center justify-center text-white/50">Loading Contact Form...</div>}>
               <Contact />
@@ -49,7 +50,7 @@ function Container() {
           </section>
         </main>
 
-        <Footer/>
+        <Footer />
       </div>
     </SmoothScrollProvider>
   );
