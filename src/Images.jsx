@@ -1,5 +1,5 @@
 //Images Section
-import profile from "./assets/profile/model3.png";
+import profile from "./assets/profile/profile-image.png";
 
 //Project images
 

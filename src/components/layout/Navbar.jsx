@@ -20,10 +20,11 @@ function Navbar() {
 
   const handleNavClick = (sectionId) => {
     setOpen(false);
-  
+    // Wait for the mobile menu exit animation (300ms) to fully complete
+    // before scrolling — otherwise the z-[200] overlay blocks scrollIntoView
     setTimeout(() => {
       scrollToSection(sectionId);
-    }, 150);
+    }, 350);
   };
 
   return (

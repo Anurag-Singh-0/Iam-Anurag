@@ -55,6 +55,7 @@ function Home() {
 
       {/* Content */}
       <div className="relative z-10 flex min-h-screen flex-col items-center justify-center px-4 pt-10 md:pt-28 text-center">
+
         {/* Availability */}
         <motion.div
           variants={fadeUp}
@@ -64,7 +65,7 @@ function Home() {
           className="mb-6 flex items-center gap-3 rounded-full bg-gray-700/30 px-5 py-2 backdrop-blur-md outline outline-white/20"
         >
           <span className="h-2 w-2 rounded-full bg-green-500 animate-pulse" />
-          <span className="text-sm text-gray-300">Available for work</span>
+          <span className="text-sm text-gray-300">Open to opportunities</span>
         </motion.div>
 
         {/* Headline */}
@@ -73,13 +74,15 @@ function Home() {
           initial="hidden"
           animate="visible"
           custom={1.1}
-          className="max-w-6xl text-4xl font-bold leading-tight md:text-6xl"
+          className="max-w-5xl text-4xl font-bold leading-tight md:text-6xl"
         >
-          Hi, I'm{" "}
+          I'm{" "}
           <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
             Anurag Singh
-          </span>{" "}
-          — a Full-Stack MERN Developer who builds real-world web applications
+          </span>
+          . I turn ideas into{" "}
+          <span className="italic text-white/70">working</span> products —{" "}
+          not just pretty UIs.
         </motion.h1>
 
         {/* Description */}
@@ -88,46 +91,46 @@ function Home() {
           initial="hidden"
           animate="visible"
           custom={1.25}
-          className="mt-6 max-w-2xl text-gray-400"
+          className="mt-6 max-w-xl text-gray-400 text-base leading-relaxed"
         >
-          I'm a Full-Stack MERN Developer specializing in React, Node.js,
-          Express, and MongoDB. I focus on clean architecture, performance, and
-          smooth user experiences.
+          MERN stack dev. I care about the details most people skip — load
+          times, edge cases, and interfaces that don't make users think twice.
+          Everything here is something I actually built and shipped.
         </motion.p>
 
-        {/* CTA */}
+        {/* CTA — z-10 keeps it in the normal stacking flow, fixing mobile touch */}
         <motion.div
           variants={fadeUp}
           initial="hidden"
           animate="visible"
           custom={1.4}
-          className="mt-10 flex gap-4 relative z-[110]"
+          className="mt-10 flex gap-4 relative z-10"
         >
           <button
             onClick={() => scrollToSection("projects")}
             className="w-full sm:w-auto rounded-full bg-white/10 border border-white/10 px-8 py-3.5 text-sm font-semibold text-white backdrop-blur-md transition-colors hover:bg-white hover:text-black touch-manipulation cursor-pointer shadow-lg"
           >
-            View Projects
+            See the work
           </button>
         </motion.div>
 
-        {/* About / Scroll Indicator */}
+        {/* Scroll Indicator */}
         <motion.div
           variants={fadeUp}
           initial="hidden"
           animate="visible"
           custom={1.6}
-          className="mt-5 flex flex-col items-center gap-2 cursor-pointer group"
+          className="mt-8 flex flex-col items-center gap-2 cursor-pointer group"
           onClick={() => scrollToSection("about")}
         >
-          <div className="bg-gradient-to-r from-cyan-200 to-blue-500 bg-clip-text text-transparent font-semibold group-hover:scale-105 transition-transform">
+          <span className="bg-gradient-to-r from-cyan-200 to-blue-500 bg-clip-text text-transparent text-sm font-semibold group-hover:scale-105 transition-transform">
             About Me
-          </div>
+          </span>
 
           <motion.div
             variants={arrowBounce}
             animate="animate"
-            className="group-hover:text-cyan-300 transition-colors"
+            className="text-cyan-400 group-hover:text-cyan-300 transition-colors"
           >
             <ArrowDown className="h-5 w-5" />
           </motion.div>
